@@ -41,7 +41,7 @@ void RCC_voidEnableClock(u8 COPY_u8BusId,u8 COPY_u8PerId){
 		/*Error:*/
 	#endif
 }
-void RCC_voidEnableClock(u8 COPY_u8BusId,u8 COPY_u8PerId){
+void RCC_voidDisableClock(u8 COPY_u8BusId,u8 COPY_u8PerId){
 	#if COPY_u8BusId == RCC_AHB 
 		CLR_BIT(RCC_AHBENR,COPY_u8PerId);
 	#elif COPY_u8BusId == RCC_APB1

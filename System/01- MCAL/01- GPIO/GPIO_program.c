@@ -1,7 +1,7 @@
 /*
 	Name:		Mohamed Ramadan
 	Date:		4 OCT 2023
-	VERSION: 	V01
+	VERSION: 	V02
 */
 /*Libraries*/
 #include "BIT_MATH.h"
@@ -12,8 +12,16 @@
 #include "GPIO_private.h"
 #include "GPIO_config.h"
 
-void GPIO_voidInit(u8 COPY_u8BusId,u8 COPY_u8PerId){
-	RCC_voidEnableClock(COPY_u8BusId,COPY_u8PerId);
+void GPIO_voidInit(_enuPORTx enuPORTx){
+	RCC_RCC_voidInit();
+	switch (enuPORTx){
+		case PORTA:RCC_voidEnableClock(RCC_APB2,2);
+		case PORTB:RCC_voidEnableClock(RCC_APB2,3);
+		case PORTC:RCC_voidEnableClock(RCC_APB2,4);
+		default: /*ERROR*/break;
+		
+	}
+	
 }
 void GPIO_voidSetMode(_enuPORTx enuPORTx,_enuPINx enuPINx,_enuMODEx enuMODEx){
 	switch(enuPORTx){
@@ -43,7 +51,7 @@ void GPIO_voidSetMode(_enuPORTx enuPORTx,_enuPINx enuPINx,_enuMODEx enuMODEx){
 						GPIOC_CRH |= ((enuMODEx) << (enuPINx*4));/*set mode */
 					}break;
 		default: /*ERROR*/ break;
-		{
+	}
 }
 void GPIO_voidSetInput(_enuPORTx enuPORTx,_enuPINx enuPINx,_enuCNFInx enuCNFInx){
 	switch(enuPORTx){
@@ -128,20 +136,19 @@ void GPIO_voidSetValue(_enuPORTx enuPORTx,_enuPINx enuPINx,_enuOutput enuOutput)
 						CLR_BIT(GPIOC_ODR,enuPINx);
 					}break;
 		default: /*ERROR*/ break;
-		{
+		}
 }
 
 _enuOutput GPIO_u8GetValue(_enuPORTx enuPORTx,_enuPINx enuPINx){
-	_enuOutput Output;
+	_enuOutput Output = 0;
 	switch(enuPORTx){
 		case PORTA:
-					Output = GET_BIT(GPIOA_IDR,_enuPINx);break;
+					Output = GET_BIT(GPIOA_IDR,enuPINx);break;
 		case PORTB:	
-					Output = GET_BIT(GPIOB_IDR,_enuPINx);break;
+					Output = GET_BIT(GPIOB_IDR,enuPINx);break;
 		case PORTC:	
-					Output = GET_BIT(GPIOC_IDR,_enuPINx);break;
+					Output = GET_BIT(GPIOC_IDR,enuPINx);break;
 		default: /*ERROR*/ break;
-		{
-		return Output;
-	}	
+	}
+	return Output;
 }

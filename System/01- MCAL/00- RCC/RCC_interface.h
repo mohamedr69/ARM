@@ -40,5 +40,5 @@
 		#define RCC_PLLX16	16
 void RCC_voidInit(void);
 void RCC_voidEnableClock(u8 COPY_u8BusId,u8 COPY_u8PerId);
-void RCC_voidEnableClock(u8 COPY_u8BusId,u8 COPY_u8PerId);
+void RCC_voidDisableClock(u8 COPY_u8BusId,u8 COPY_u8PerId);
 #endif 

@@ -6,13 +6,12 @@
 #ifndef GPIO_INTERFACE_H
 #define GPIO_INTERFACE_H
 
-typedef enum PORTx{
+typedef enum{
 	PORTA,
 	PORTB,
 	PORTC
-{_enuPORTx;
-
-typedef enum PINx{
+}_enuPORTx;
+typedef enum{
 	PIN0,
 	PIN1,
 	PIN2,
@@ -29,29 +28,29 @@ typedef enum PINx{
 	PIN13,
 	PIN14,
 	PIN15,
-{_enuPINx;
+}_enuPINx;
 	
-typedef enum MODEx{
+typedef enum{
 	Input,
 	Output10MHZ,
 	Output2MHZ,
 	Output50MHZ
 }_enuMODEx;	
 
-typedef enum CNFInX{
+typedef enum{
 	Analog,
 	Floating,
 	PULL_UP_DOWN,
 }_enuCNFInx;
 	
-typedef enum CNFOutX{
+typedef enum{
 	PUSH_PULL,
 	OPEN_DRAIN,
 	AF_PUSH_PULL,
 	AF_OPEN_DRAIN
 }_enuCNFOutx;	
 
-typedef enum Output{
+typedef enum{
 	Low,
 	High
 }_enuOutput;
