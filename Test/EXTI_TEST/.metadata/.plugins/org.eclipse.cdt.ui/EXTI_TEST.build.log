@@ -1,0 +1,11 @@
+21:53:28 **** Incremental Build of configuration Debug for project EXTI_TEST ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "EXTI_TEST.elf"
+   text	   data	    bss	    dec	    hex	filename
+   4355	    176	    412	   4943	   134f	EXTI_TEST.elf
+Finished building: EXTI_TEST.siz
+ 
+
+21:53:29 Build Finished (took 1s.516ms)
+

@@ -1,0 +1,53 @@
+/*
+	Name: 		Mohamed Ramadan Rashad
+	Date:		5 OCT 2023
+	DRIVER:		EXTERNAL INTERRUPT
+	Version:	V01
+*/
+#include "BIT_MATH.h"
+#include "STD_TYPES.h"
+
+
+#include "EXTI_interface.h"
+#include "EXTI_private.h"
+#include "EXTI_config.h"
+
+void EXTI_voidInit(){
+	/*LINE and Mode check*/
+	#if EXTI_MODE == RISING_EDGE
+		SET_BIT(EXTI->RTSR,EXTI_LINE);
+	#elif EXTI_MODE == FALLING_EDGE
+		SET_BIT(EXTI->FTSR,EXTI_LINE);
+	#elif EXTI_MODE == ON_CHAGE
+		SET_BIT(EXTI->RTSR,EXTI_LINE);
+		SET_BIT(EXTI->FTSR,EXTI_LINE);
+	#else	
+		/*ERROR:*/
+		#error "WRONGE MODE AND LINE CHOICES"
+	#endif
+	/*Disable interrupt*/
+	EXTI_voidDisableEXTI(u8 COPY_u8Line)
+	
+}
+void EXTI_voidEnableEXTI(u8 COPY_u8Line){
+	SET_BIT(EXTI->IMR,COPY_u8Line);
+	
+}
+void EXTI_voidDisableEXTI(u8 COPY_u8Line){
+	CLR_BIT(EXTI->IMR,COPY_u8Line);
+	
+}
+void EXTI_voidSWTrigger(u8 COPY_u8Line){
+	
+	SET_BIT(EXTI->SWIER,COPY_u8Line);
+}
+void EXTI_voidSetSignalLatch(u8 COPY_u8Line,u8 COPY_u8Mode){
+	switch (COPY_u8Mode){
+		case RISING_EDGE: 	SET_BIT(EXTI->RTSR,EXTI_LINE); 	break;
+		case FALLING_EDGE: 	SET_BIT(EXTI->FTSR,EXTI_LINE);	break;
+		case ON_CHANGE:		SET_BIT(EXTI->RTSR,EXTI_LINE);
+							SET_BIT(EXTI->FTSR,EXTI_LINE);
+							break;
+		default:/*Error*/	break;
+	}
+}
