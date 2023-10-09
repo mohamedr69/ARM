@@ -28,4 +28,12 @@
 	#define NVIC_IABR1	*((volatile u32*)0xE000E300)// Interrupt active bit register for 32-33 read only
 	
 	#define NVIC_IPR	((volatile u8*)(0xE000E100+0x300))	//interrupt sw priority (no derefernce) accessed by array u8 for byte access
+	
+	#define NVIC_GROUP_4_SUB_0	0x05FA0300
+	#define NVIC_GROUP_3_SUB_1	0x05FA0400
+	#define NVIC_GROUP_2_SUB_2	0x05FA0500
+	#define NVIC_GROUP_1_SUB_3	0x05FA0600
+	#define NVIC_GROUP_0_SUB_4	0x05FA0700
+	
+
 #endif

@@ -12,8 +12,19 @@
 #include "NVIC_interface.h"
 #include "NVIC_private.h"
 #include "NVIC_config.h"
-
-
+void NVIC_voidInit(void){
+	
+	#define SCB_AIRCR *((u32 *)(0xE000ED00 + 0x0C )) // priority control + 0x0C offset
+	SCB_AIRCR = NVIC_GROUP_SUB;
+}
+void NVIC_voidSetPriority2(u8 COPT_u8PeriphralIdx, u8 COPY_u8Priority){
+	
+	if(COPT_u8PeriphralIdx < 60){
+		NVIC_IPR[COPT_u8PeriphralIdx] = COPY_u8Priority;
+	}else{
+		/*Error*/
+	}
+}
 void NVIC_voidEnableInterrupt(u8 COPY_u8IntNum){
 	/*DATA VALIDATION*/
 	if(COPY_u8IntNum < 32){

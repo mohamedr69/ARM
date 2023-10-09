@@ -20,6 +20,8 @@ priorities
 #define GROUP5	0x05FA0500  // 2	BITS FOR GROUP 2 BIT FOR SUB
 #define GROUP6	0x05FA0600	// 1	BITS FOR GROUP 3 BIT FOR SUB
 #define GROUP7	0x05FA0700	// 0	BITS FOR GROUP 4 BIT FOR SUB
+void NVIC_voidInit(void);
+void NVIC_voidSetPriority2(u8 COPT_u8PeriphralIdx, u8 COPY_u8Priority);
 
 void NVIC_voidEnableInterrupt	(u8 COPY_u8IntNum);
 void NVIC_voidDisableInterrupt	(u8 COPY_u8IntNum);
