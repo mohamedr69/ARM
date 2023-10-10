@@ -12,4 +12,5 @@ void EXTI_voidEnableEXTI(u8 COPY_u8Line);
 void EXTI_voidDisableEXTI(u8 COPY_u8Line);
 void EXTI_voidSWTrigger(u8 COPY_u8Line);
 void EXTI_voidSetSignalLatch(u8 COPY_u8Line,u8 COPY_u8Mode);
+void EXTI_voidSetCallBack((void)(*CB)(void));
 #endif

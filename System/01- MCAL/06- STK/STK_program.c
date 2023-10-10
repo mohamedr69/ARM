@@ -35,6 +35,9 @@ void STK_voidSetBusyWait(u32 COPY_u32Ticks){
 }
 
 void STK_voidSetIntervalSingle(u32 COPY_u32Ticks,(void)(*CB)(void)){
+	/*Disble timer*/
+	CLR_BIT(STK_CTRL,0);
+	STK_VAL = COPY_u32Ticks;
 	STK_LOAD = COPY_u32Ticks;
 	CALLBACK_SINGLE = CB;
 	SET_BIT(STK_CTRL,STK_TICKINT);

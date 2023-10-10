@@ -11,7 +11,7 @@
 #include "EXTI_interface.h"
 #include "EXTI_private.h"
 #include "EXTI_config.h"
-
+(void)(*GLOBAL_CALLBACK)(void);
 void EXTI_voidInit(){
 	/*LINE and Mode check*/
 	#if EXTI_MODE == RISING_EDGE
@@ -50,4 +50,12 @@ void EXTI_voidSetSignalLatch(u8 COPY_u8Line,u8 COPY_u8Mode){
 							break;
 		default:/*Error*/	break;
 	}
+}
+void EXTI_voidSetCallBack((void)(*CB)(void)){
+	
+	GLOBAL_CALLBACK = CB;
+}
+void EXTI0_IRQ_handler(void){
+	GLOBAL_CALLBACK();
+	
 }
