@@ -1,7 +1,9 @@
 /*
-	Name:		Mohamed Ramdan
-	Date:		2 October 2023
-	Version:	V01
+	Name	:	Mohamed Ramdan
+	Date	:	2 October 2023
+	Version	:	V02
+	LOG		:	V01 -> Initial Creation
+			:	V02 -> Add to signed Data
 */
 #ifndef STD_TYPES_H
 #define STD_TYPES_H

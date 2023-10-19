@@ -17,6 +17,7 @@ void DMA_voidInit(void){
 		0111101011010010
 		00007AD3
 	*/
+	
 	#if CHANNEL_ID == 1
 		DMA->ch[0].CCR = 0x00007AD2;
 	
